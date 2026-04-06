@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip Card Gallery</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #dbeafe, #fce7f3);
+      padding: 40px 20px;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 50px;
+    }
+
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 90%;
+      margin: auto;
+    }
+
+    /* Card Styling */
+    .card {
+      width: 100%;
+      height: 340px;
+      perspective: 1200px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.9s ease;
+      transform-style: preserve-3d;
+      border-radius: 20px;
+    }
+
+    /* Flip + Floating Effect */
+    .card:hover .card-inner {
+      transform: rotateY(180deg) scale(1.05);
+    }
+
+    /* Front and Back */
+    .card-front, .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Front Side */
+    .card-front {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .card-front h3 {
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    /* Back Side */
+    .card-back {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      transform: rotateY(180deg);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .card-back h2 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .card-back p {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .card-back button {
+      padding: 12px 20px;
+      border: none;
+      background: white;
+      color: #2575fc;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.4s;
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-back button:hover {
+      background: #111827;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 950px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .title {
+        font-size: 36px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1 class="title">Flip Card Gallery</h1>
+  <p class="subtitle">Hover on cards to explore beautiful places ✨</p>
+
+  <div class="gallery">
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=1" alt="Image 1">
+          <h3>Nature</h3>
+        </div>
+        <div class="card-back">
+          <h2>Nature</h2>
+          <p>Beautiful natural view with fresh air and greenery.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=2" alt="Image 2">
+          <h3>Mountains</h3>
+        </div>
+        <div class="card-back">
+          <h2>Mountains</h2>
+          <p>High peaks and adventurous trekking locations.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=3" alt="Image 3">
+          <h3>Beach</h3>
+        </div>
+        <div class="card-back">
+          <h2>Beach</h2>
+          <p>Relaxing sea waves and golden sand beaches.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=4" alt="Image 4">
+          <h3>City</h3>
+        </div>
+        <div class="card-back">
+          <h2>City</h2>
+          <p>Modern lifestyle and attractive city architecture.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=5" alt="Image 5">
+          <h3>Forest</h3>
+        </div>
+        <div class="card-back">
+          <h2>Forest</h2>
+          <p>Deep forest view with wildlife and greenery.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://picsum.photos/300/200?random=6" alt="Image 6">
+          <h3>Space</h3>
+        </div>
+        <div class="card-back">
+          <h2>Space</h2>
+          <p>Stars, galaxies, and mysteries of the universe.</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
